@@ -19,6 +19,12 @@ func UnmarshalUUIDScalar(v interface{}) (uuid.UUID, error) {
 	switch v := v.(type) {
 	case string:
 		return uuid.Parse(v)
+	case *string:
+		if v == nil {
+			return uuid.Nil, nil
+		}
+
+		return uuid.Parse(*v)
 	default:
 		return uuid.Nil, fmt.Errorf("%T is not a uuid", v)
 	}
