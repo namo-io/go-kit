@@ -13,4 +13,7 @@ var (
 
 	// ContextRequestID contextRequestID for tracing
 	ContextRequestID = ContextKey("requestID")
+
+	// ContextAuthorization contestAuthorization
+	ContextAuthorization = ContextKey("authorization")
 )
