@@ -77,8 +77,8 @@ func (s *TokenStore) IssueToken(ctx context.Context, claims jwt.Claims) (*Token,
 }
 
 // VertifyToken vertify token
-func (s *TokenStore) VertifyToken(ctx context.Context, token *Token, claims jwt.Claims) error {
-	_, err := jwt.ParseWithClaims(token.String(), claims, func(token *jwt.Token) (interface{}, error) {
+func (s *TokenStore) VertifyToken(ctx context.Context, token string, claims jwt.Claims) error {
+	_, err := jwt.ParseWithClaims(token, claims, func(token *jwt.Token) (interface{}, error) {
 		return []byte(s.Secret), nil
 	})
 
