@@ -9,23 +9,25 @@ import (
 	"github.com/google/uuid"
 )
 
-func MarshalUUIDScalar(id uuid.UUID) graphql.Marshaler {
+func MarshalUUIDScalar(id *uuid.UUID) graphql.Marshaler {
 	return graphql.WriterFunc(func(w io.Writer) {
 		io.WriteString(w, strconv.Quote(id.String()))
 	})
 }
 
-func UnmarshalUUIDScalar(v interface{}) (uuid.UUID, error) {
+func UnmarshalUUIDScalar(v interface{}) (*uuid.UUID, error) {
 	switch v := v.(type) {
 	case string:
-		return uuid.Parse(v)
+		uuid, err := uuid.Parse(v)
+		return &uuid, err
 	case *string:
 		if v == nil {
-			return uuid.Nil, nil
+			return nil, nil
 		}
 
-		return uuid.Parse(*v)
+		uuid, err := uuid.Parse(*v)
+		return &uuid, err
 	default:
-		return uuid.Nil, fmt.Errorf("%T is not a uuid", v)
+		return nil, fmt.Errorf("%T is not a uuid", v)
 	}
 }
