@@ -12,6 +12,7 @@ require (
 	github.com/prometheus/common v0.15.0
 	github.com/sirupsen/logrus v1.7.0
 	github.com/spf13/viper v1.7.1
+	go.mongodb.org/mongo-driver v1.4.4
 	gopkg.in/sohlich/elogrus.v7 v7.0.0
 	gorm.io/driver/postgres v1.0.6
 	gorm.io/gorm v1.20.9
