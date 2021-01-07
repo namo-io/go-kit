@@ -142,8 +142,6 @@ func NewWithConfig(cfg *Configuration) Logger {
 
 	// regist elasticsearch hook
 	if cfg.ElasticSearchConfig != nil && cfg.ElasticSearchConfig.Enabled {
-		log.Info("add logger elasticsearch hook ...")
-
 		client, err := elastic.NewClient(
 			elastic.SetURL(cfg.ElasticSearchConfig.URL),
 			elastic.SetSniff(cfg.ElasticSearchConfig.Sniff))
@@ -155,7 +153,6 @@ func NewWithConfig(cfg *Configuration) Logger {
 			log.Error(err)
 		}
 
-		log.Info("added logger elasticsearch hook")
 		log.Hooks.Add(hook)
 	}
 
