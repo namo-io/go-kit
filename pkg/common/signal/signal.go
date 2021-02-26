@@ -5,7 +5,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/namo-io/go-kit/log"
+	"github.com/namo-io/go-kit/pkg/common/log"
 )
 
 // WaitSignal this is blocking function until signal comes or context cancel

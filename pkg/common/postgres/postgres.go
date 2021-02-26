@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/namo-io/go-kit/log"
+	"github.com/namo-io/go-kit/pkg/common/log"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

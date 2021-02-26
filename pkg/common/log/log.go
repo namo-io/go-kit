@@ -7,7 +7,7 @@ import (
 	"runtime"
 
 	nested "github.com/antonfisher/nested-logrus-formatter"
-	"github.com/namo-io/go-kit/constant"
+	"github.com/namo-io/go-kit/pkg/common/constant"
 	"github.com/olivere/elastic/v7"
 	"github.com/sirupsen/logrus"
 	"gopkg.in/sohlich/elogrus.v7"

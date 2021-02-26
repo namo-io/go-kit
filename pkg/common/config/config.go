@@ -5,7 +5,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/namo-io/go-kit/log"
+	"github.com/namo-io/go-kit/pkg/common/log"
 
 	"github.com/spf13/viper"
 )

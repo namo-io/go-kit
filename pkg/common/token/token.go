@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/namo-io/go-kit/log"
+	"github.com/namo-io/go-kit/pkg/common/log"
 
 	jwt "github.com/dgrijalva/jwt-go"
 )
