@@ -11,7 +11,7 @@ require (
 	github.com/ryanuber/columnize v0.0.0-20160712163229-9b3edd62028f
 	github.com/sirupsen/logrus v1.7.0
 	github.com/spf13/viper v1.7.1
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.7.0 // indirect
 	go.mongodb.org/mongo-driver v1.4.4
 	golang.org/x/sys v0.0.0-20200625212154-ddb9806d33ae // indirect
 	gopkg.in/sohlich/elogrus.v7 v7.0.0

@@ -9,27 +9,14 @@ import (
 	"github.com/ryanuber/columnize"
 )
 
-// Exported variables are expected to be set via -ldflags -X options at build-time
 var (
-	// Application is the application name
-	Application string
-
-	// Timestamp is the time at build
 	Timestamp string
-
-	// Commit is the commit hash
-	Commit string
-
-	// Tag is the most recent tag
-	Tag string
-
-	version Version
+	Commit    string
+	Tag       string
+	version   Version
 )
 
-// Version describes the application version and build environment
 type Version struct {
-	Application string `json:"application"`
-
 	Tag       string `json:"tag"`
 	Timestamp string `json:"timestamp"`
 	Commit    string `json:"commit"`
@@ -41,10 +28,6 @@ type Version struct {
 }
 
 func init() {
-	version = parse()
-}
-
-func parse() Version {
 	modules := map[string]string{}
 	buildInfo, ok := debug.ReadBuildInfo()
 	if ok {
@@ -54,19 +37,17 @@ func parse() Version {
 		}
 	}
 
-	return Version{
-		Application: Application,
-		Tag:         Tag,
-		Timestamp:   Timestamp,
-		Commit:      Commit,
-		Golang:      runtime.Version(),
-		OS:          runtime.GOOS,
-		Arch:        runtime.GOARCH,
-		Modules:     modules,
+	version = Version{
+		Tag:       Tag,
+		Timestamp: Timestamp,
+		Commit:    Commit,
+		Golang:    runtime.Version(),
+		OS:        runtime.GOOS,
+		Arch:      runtime.GOARCH,
+		Modules:   modules,
 	}
 }
 
-// Info returns version information
 func Info() Version {
 	return version
 }
@@ -82,7 +63,7 @@ func (v Version) String(modules bool) string {
 		fmt.Sprintf("Git commit:|%s", v.Commit),
 		fmt.Sprintf("OS/Arch:|%s/%s", v.OS, v.Arch),
 	}
-	baseVersion := fmt.Sprintf("%s\n%s", v.Application, columnize.Format(clientVersion, cfg))
+	baseVersion := columnize.Format(clientVersion, cfg)
 
 	if modules {
 		moduleVersion := []string{}
@@ -96,7 +77,6 @@ func (v Version) String(modules bool) string {
 	return baseVersion
 }
 
-// Short returns short version string
 func (v Version) Short() string {
 	return fmt.Sprintf("%s built: %s", v.Tag, v.Timestamp)
 }
